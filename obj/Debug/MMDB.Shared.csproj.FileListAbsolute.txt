@@ -1,0 +1,7 @@
+C:\Projects\MMDB\MMDB.Shared\bin\Debug\MMDB.Shared.dll
+C:\Projects\MMDB\MMDB.Shared\bin\Debug\MMDB.Shared.pdb
+C:\Projects\MMDB\MMDB.Shared\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\MMDB\MMDB.Shared\obj\Debug\MMDB.Shared.dll
+C:\Projects\MMDB\MMDB.Shared\obj\Debug\MMDB.Shared.pdb
+C:\Projects\MMDB\MMDB.Shared\bin\Debug\MMDB.Shared.dll.CodeAnalysisLog.xml
+C:\Projects\MMDB\MMDB.Shared\bin\Debug\MMDB.Shared.dll.lastcodeanalysissucceeded
