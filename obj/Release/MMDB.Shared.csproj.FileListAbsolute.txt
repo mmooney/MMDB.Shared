@@ -1,0 +1,5 @@
+C:\Projects\MMDB\MMDB.Shared\bin\Release\MMDB.Shared.dll
+C:\Projects\MMDB\MMDB.Shared\bin\Release\MMDB.Shared.pdb
+C:\Projects\MMDB\MMDB.Shared\obj\Release\ResolveAssemblyReference.cache
+C:\Projects\MMDB\MMDB.Shared\obj\Release\MMDB.Shared.dll
+C:\Projects\MMDB\MMDB.Shared\obj\Release\MMDB.Shared.pdb
