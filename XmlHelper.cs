@@ -18,6 +18,15 @@ namespace MMDB.Shared
 			}
 		}
 
+		public static T DeserializeFile<T>(string filePath)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(T));
+			using (StreamReader reader = new StreamReader(filePath))
+			{
+				return (T)serializer.Deserialize(reader);
+			}
+		}
+
 		public static string Serialize(object value)
 		{
 			XmlSerializer serializer = new XmlSerializer(value.GetType());
@@ -25,6 +34,15 @@ namespace MMDB.Shared
 			{
 				serializer.Serialize(writer, value);
 				return writer.ToString();
+			}
+		}
+		
+		public static void SerializeFile(object value, string filePath)
+		{
+			XmlSerializer serializer = new XmlSerializer(value.GetType());
+			using (StreamWriter writer = new StreamWriter(filePath))
+			{
+				serializer.Serialize(writer, value);
 			}
 		}
 	}
