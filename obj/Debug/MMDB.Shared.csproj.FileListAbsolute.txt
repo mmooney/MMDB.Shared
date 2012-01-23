@@ -5,3 +5,10 @@ C:\Projects\MMDB\MMDB.Shared\obj\Debug\MMDB.Shared.dll
 C:\Projects\MMDB\MMDB.Shared\obj\Debug\MMDB.Shared.pdb
 C:\Projects\MMDB\MMDB.Shared\bin\Debug\MMDB.Shared.dll.CodeAnalysisLog.xml
 C:\Projects\MMDB\MMDB.Shared\bin\Debug\MMDB.Shared.dll.lastcodeanalysissucceeded
+C:\Projects\git\MMDB.Shared\bin\Debug\MMDB.Shared.dll
+C:\Projects\git\MMDB.Shared\bin\Debug\MMDB.Shared.pdb
+C:\Projects\git\MMDB.Shared\bin\Debug\MMDB.Shared.dll.CodeAnalysisLog.xml
+C:\Projects\git\MMDB.Shared\bin\Debug\MMDB.Shared.dll.lastcodeanalysissucceeded
+C:\Projects\git\MMDB.Shared\obj\Debug\ResolveAssemblyReference.cache
+C:\Projects\git\MMDB.Shared\obj\Debug\MMDB.Shared.dll
+C:\Projects\git\MMDB.Shared\obj\Debug\MMDB.Shared.pdb
