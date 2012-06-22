@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMDB.Shared", "MMDB.Shared.csproj", "{2673FF3A-6E11-49AC-AE5B-145EB5EFF8D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMDBCore", "..\MMDBCore\MMDBCore.csproj", "{777D065F-B42E-420C-A04B-CA47C0982C85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMDB.Core", "..\MMDBCore\MMDB.Core.csproj", "{777D065F-B42E-420C-A04B-CA47C0982C85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
