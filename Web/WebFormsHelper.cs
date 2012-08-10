@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Text.RegularExpressions;
 
 namespace MMDB.Shared.Web
 {
@@ -118,7 +119,7 @@ namespace MMDB.Shared.Web
 			if(!string.IsNullOrEmpty(stringValue))
 			{
 				Guid tempGuid;
-				if (!Guid.TryParse(stringValue, out tempGuid))
+				if (!GuidTryParse(stringValue, out tempGuid))
 				{
 					throw new Exception(string.Format("Failed to parse Guid parameter \"{0}\" for value \"{1}\"", parameterName, stringValue));
 				}
@@ -127,6 +128,48 @@ namespace MMDB.Shared.Web
 			return returnValue;
 		}
 
+		/// http://geekswithblogs.net/colinbo/archive/2006/01/18/66307.aspx
+		/// <summary>
+		/// Converts the string representation of a Guid to its Guid 
+		/// equivalent. A return value indicates whether the operation 
+		/// succeeded. 
+		/// </summary>
+		/// <param name="s">A string containing a Guid to convert.</param>
+		/// <param name="result">
+		/// When this method returns, contains the Guid value equivalent to 
+		/// the Guid contained in <paramref name="s"/>, if the conversion 
+		/// succeeded, or <see cref="Guid.Empty"/> if the conversion failed. 
+		/// The conversion fails if the <paramref name="s"/> parameter is a 
+		/// <see langword="null" /> reference (<see langword="Nothing" /> in 
+		/// Visual Basic), or is not of the correct format. 
+		/// </param>
+		/// <value>
+		/// <see langword="true" /> if <paramref name="s"/> was converted 
+		/// successfully; otherwise, <see langword="false" />.
+		/// </value>
+		/// <exception cref="ArgumentNullException">
+		///        Thrown if <pararef name="s"/> is <see langword="null"/>.
+		/// </exception>
+		public static bool GuidTryParse(string s, out Guid result)
+		{
+			if (s == null)
+				throw new ArgumentNullException("s");
+			Regex format = new Regex(
+				"^[A-Fa-f0-9]{32}$|" +
+				"^({|\\()?[A-Fa-f0-9]{8}-([A-Fa-f0-9]{4}-){3}[A-Fa-f0-9]{12}(}|\\))?$|" +
+				"^({)?[0xA-Fa-f0-9]{3,10}(, {0,1}[0xA-Fa-f0-9]{3,6}){2}, {0,1}({)([0xA-Fa-f0-9]{3,4}, {0,1}){7}[0xA-Fa-f0-9]{3,4}(}})$");
+			Match match = format.Match(s);
+			if (match.Success)
+			{
+				result = new Guid(s);
+				return true;
+			}
+			else
+			{
+				result = Guid.Empty;
+				return false;
+			}
+		}
 		public static Guid GetGuidParameter(string parameterName, Guid defaultValue)
 		{
 			Guid? returnValue = WebFormsHelper.GetGuidParameter(parameterName);
