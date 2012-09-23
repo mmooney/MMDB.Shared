@@ -32,7 +32,7 @@ namespace MMDB.Shared
 		public static string IsNullOrEmpty(string input, params string[] otherValues)
 		{
 			string returnValue = input;
-			if(string.IsNullOrEmpty(input))
+			if(!string.IsNullOrEmpty(input))
 			{
 				foreach(string value in otherValues)
 				{
