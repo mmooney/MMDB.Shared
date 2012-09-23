@@ -18,22 +18,49 @@ namespace MMDB.Shared
 			return returnValue;
 		}
 
-		public static bool GetBoolSetting(string key, bool defaultValue)
+		public static bool GetRequiredBoolSetting(string key)
 		{
-			bool returnValue;
-			string tempValue = GetSetting(key);
-			if (string.IsNullOrEmpty(tempValue))
+			bool? value = GetBoolSetting(key);
+			if(!value.HasValue)
 			{
-				returnValue = defaultValue;
+				throw new Exception(string.Format("Missing required configuration setting \"{0}\"", key));
+			}
+			return value.Value;
+		}
+
+		public static bool? GetBoolSetting(string key)
+		{
+			bool? returnValue;
+			bool tempValue;
+			string stringValue = GetSetting(key);
+			if (string.IsNullOrEmpty(stringValue))
+			{
+				returnValue = null;
+			}
+			else if (!bool.TryParse(stringValue, out tempValue))
+			{
+				throw new Exception(string.Format("Failed to parse application setting \"{0}\" into a boolean, value: \"{1}\"", key, stringValue));
 			}
 			else
 			{
-				if (!bool.TryParse(tempValue, out returnValue))
-				{
-					throw new Exception(string.Format("Failed to parse application setting \"{0}\" into a boolean, value: \"{1}\"", key, tempValue));
-				}
+				returnValue = tempValue;
 			}
 			return returnValue;
+		}
+
+		public static bool GetBoolSetting(string key, bool defaultValue)
+		{
+			return GetBoolSetting(key).GetValueOrDefault(defaultValue);
+		}
+
+		public static int GetRequiredIntSetting(string key)
+		{
+			int? value = GetIntSetting(key);
+			if (!value.HasValue)
+			{
+				throw new Exception(string.Format("Missing required configuration setting \"{0}\"", key));
+			}
+			return value.Value;
 		}
 
 		public static int? GetIntSetting(string key)
@@ -54,6 +81,11 @@ namespace MMDB.Shared
 				returnValue = tempValue;
 			}
 			return returnValue;
+		}
+
+		public static int GetIntSetting(string key, int defaultValue)
+		{
+			return GetIntSetting(key).GetValueOrDefault(defaultValue);
 		}
 
 		public static string GetSetting(string key)
