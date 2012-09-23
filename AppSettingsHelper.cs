@@ -88,6 +88,11 @@ namespace MMDB.Shared
 			return GetIntSetting(key).GetValueOrDefault(defaultValue);
 		}
 
+		public static string GetSetting(string key, string defaultValue)
+		{
+			return StringHelper.IsNullOrEmpty(GetSetting(key), defaultValue);
+		}
+
 		public static string GetSetting(string key)
 		{
 			return ConfigurationManager.AppSettings[key];
