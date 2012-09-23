@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppSettingsHelper.cs" />
+    <Compile Include="DateTimeHelper.cs" />
     <Compile Include="EnumItemData.cs" />
     <Compile Include="EnumDisplayValueAttribute.cs" />
     <Compile Include="EnumHelper.cs" />
