@@ -12,3 +12,4 @@ C:\Projects\MMDB.Shared\bin\Release\MMDB.Shared.dll
 C:\Projects\MMDB.Shared\bin\Release\MMDB.Shared.pdb
 C:\Projects\MMDB.Shared\obj\Release\MMDB.Shared.dll
 C:\Projects\MMDB.Shared\obj\Release\MMDB.Shared.pdb
+C:\Projects\MMDB.Shared\obj\Release\MMDB.Shared.csprojResolveAssemblyReference.cache
