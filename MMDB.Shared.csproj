@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecordNotFoundException.cs" />
     <Compile Include="StringHelper.cs" />
+    <Compile Include="TestDataHelper.cs" />
     <Compile Include="UnknownEnumValueException.cs" />
     <Compile Include="Web\MMDBPage.cs">
       <SubType>ASPXCodeBehind</SubType>
