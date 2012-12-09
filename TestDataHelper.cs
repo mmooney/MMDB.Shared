@@ -20,9 +20,9 @@ namespace MMDB.Shared
 			}
 		}
 
-		public static int RandomInt()
+		public static int RandomInt(int minValue=int.MinValue, int maxValue=int.MaxValue)
 		{
-			return TestDataHelper.Random.Next();
+			return TestDataHelper.Random.Next(minValue, maxValue);
 		}
 
 		public static decimal RandomDecimal()
