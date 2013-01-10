@@ -18,6 +18,7 @@ namespace MMDB.Shared
 			MemoryStream stream = new MemoryStream(data.Length+10);
 			StreamWriter writer = new StreamWriter(stream);
 			writer.Write(data);
+			writer.Flush();
 			return stream;
 		}
 
