@@ -404,5 +404,10 @@ namespace MMDB.Shared.Web
 			}
 		}
 
+		public static DateTime GetDateTimeViewState(StateBag viewState, string fieldName, DateTime defaultValue)
+		{
+			DateTime? returnValue = WebFormsHelper.GetDateTimeViewState(viewState, fieldName);
+			return returnValue.GetValueOrDefault(defaultValue);
+		}
 	}
 }

@@ -48,7 +48,6 @@ namespace MMDB.Shared.Web
 			WebFormsHelper.SetBoolViewState(this.ViewState, fieldName, value);
 		}
 
-
 		protected Guid? GetGuidViewState(string fieldName)
 		{
 			return WebFormsHelper.GetGuidViewState(this.ViewState, fieldName);
@@ -108,6 +107,26 @@ namespace MMDB.Shared.Web
 		protected void SetIntViewState(string fieldName, int? value)
 		{
 			WebFormsHelper.SetIntViewState(this.ViewState, fieldName, value);
+		}
+
+		protected DateTime? GetDateTimeViewState(string fieldName)
+		{
+			return WebFormsHelper.GetDateTimeViewState(this.ViewState, fieldName);
+		}
+
+		protected DateTime GetDateTimeViewState(string fieldName, DateTime defaultValue)
+		{
+			return WebFormsHelper.GetDateTimeViewState(this.ViewState, fieldName, defaultValue);
+		}
+
+		protected DateTime GetRequiredDateTimeViewState(string fieldName)
+		{
+			return WebFormsHelper.GetRequiredDateTimeViewState(this.ViewState, fieldName);
+		}
+
+		protected void SetDateTimeViewState(string fieldName, DateTime value)
+		{
+			WebFormsHelper.SetDateTimeViewState(this.ViewState, fieldName, value);
 		}
 
 	}
