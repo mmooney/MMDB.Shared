@@ -112,6 +112,38 @@ namespace MMDB.Shared.Web
 			return value.Value;
 		}
 
+		public static DateTime? GetDateTimeParameter(string parameterName)
+		{
+			DateTime? returnValue = null;
+			string stringValue = GetStringParameter(parameterName);
+			if (!string.IsNullOrEmpty(stringValue))
+			{
+				DateTime tempDate;
+				if (!DateTime.TryParse(stringValue, out tempDate))
+				{
+					throw new Exception(string.Format("Failed to parse DateTime parameter \"{0}\" for value \"{1}\"", parameterName, stringValue));
+				}
+				returnValue = tempDate;
+			}
+			return returnValue;
+		}
+
+		public static DateTime GetDateTimeParameter(string parameterName, DateTime defaultValue)
+		{
+			DateTime? returnValue = WebFormsHelper.GetDateTimeParameter(parameterName);
+			return returnValue.GetValueOrDefault(defaultValue);
+		}
+
+		public static DateTime GetRequiredDateTimeParameter(string parameterName)
+		{
+			DateTime? value = WebFormsHelper.GetDateTimeParameter(parameterName);
+			if (!value.HasValue)
+			{
+				throw new Exception(string.Format("Missing {0} Parameter", parameterName));
+			}
+			return value.Value;
+		}
+
 		public static Guid? GetGuidParameter(string parameterName)
 		{
 			Guid? returnValue = null;
@@ -346,5 +378,6 @@ namespace MMDB.Shared.Web
 				viewState[fieldName] = null;
 			}
 		}
+
 	}
 }

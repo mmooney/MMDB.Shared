@@ -68,5 +68,19 @@ namespace MMDB.Shared.Web
 			return WebFormsHelper.GetRequiredGuidParameter(parameterName);
 		}
 
+		protected DateTime? GetDateTimeParameter(string parameterName)
+		{
+			return WebFormsHelper.GetDateTimeParameter(parameterName);
+		}
+
+		protected DateTime GetDateTimeParameter(string parameterName, DateTime defaultValue)
+		{
+			return WebFormsHelper.GetDateTimeParameter(parameterName, defaultValue);
+		}
+
+		protected DateTime GetRequiredDateTimeParameter(string parameterName)
+		{
+			return WebFormsHelper.GetRequiredDateTimeParameter(parameterName);
+		}
 	}
 }
