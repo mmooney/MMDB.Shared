@@ -144,6 +144,31 @@ namespace MMDB.Shared.Web
 			return value.Value;
 		}
 
+		public static DateTime? GetDateTimeViewState(StateBag viewState, string fieldName)
+		{
+			DateTime? returnValue = null;
+			if (viewState[fieldName] != null)
+			{
+				returnValue = (DateTime)viewState[fieldName];
+			}
+			return returnValue;
+		}
+
+		public static DateTime GetRequiredDateTimeViewState(StateBag viewState, string fieldName)
+		{
+			DateTime? returnValue = WebFormsHelper.GetDateTimeViewState(viewState, fieldName);
+			if (!returnValue.HasValue)
+			{
+				throw new Exception(string.Format("Missing required ViewState DateTime value \"{0}\"", fieldName));
+			}
+			return returnValue.Value;
+		}
+
+		public static void SetDateTimeViewState(StateBag viewState, string fieldName, DateTime value)
+		{
+			viewState[fieldName] = value;
+		}
+
 		public static Guid? GetGuidParameter(string parameterName)
 		{
 			Guid? returnValue = null;
