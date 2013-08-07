@@ -75,12 +75,12 @@ namespace MMDB.Shared
 		{
 			if(enumValue == null)
 			{
-				throw new Exception("Unable to load enum display value, enumValue parameter is null");
+				throw new ArgumentNullException("Unable to load enum display value, enumValue parameter is null");
 			}
 			Type enumType = enumValue.GetType();
 			if(!enumType.IsEnum)
 			{
-				throw new Exception(string.Format("Unable to load enum display value, type of enumValue parameter is not an enum: {0}",enumType.Name));
+				throw new InvalidCastException(string.Format("Unable to load enum display value, type of enumValue parameter is not an enum: {0}",enumType.Name));
 			}
 			return GetDisplayValue((int)enumValue,enumType);
 		}
@@ -111,12 +111,12 @@ namespace MMDB.Shared
 			Dictionary<int,EnumItemData> enumList = GetEnumData(enumType);
 			if(enumList == null)
 			{
-				throw new Exception(string.Format("Failed to load enum list for type {0}",enumType.Name));
+				throw new ArgumentNullException(string.Format("Failed to load enum list for type {0}",enumType.Name));
 			}
 			EnumItemData item;
 			if(!enumList.TryGetValue(value, out item))
 			{
-				throw new Exception(string.Format("Failed to load value {0} for enum type {1}",value,enumType.Name));
+				throw new EnumCastException(value,enumType);
 			}
 			return item.DisplayValue;
 		}
@@ -151,13 +151,22 @@ namespace MMDB.Shared
 			}
 			else
 			{
-				if (!Enum.IsDefined(typeof(T), value))
-				{
-					returnValue = null;
-				}
-				else
+				if (Enum.IsDefined(typeof(T), value))
 				{
 					returnValue = (T)Enum.Parse(typeof(T), value);
+				}
+				else 
+				{
+					var nameList = Enum.GetNames(typeof(T));
+					var matchingName = nameList.FirstOrDefault(i => !string.IsNullOrEmpty(i) && i.Equals(value, StringComparison.CurrentCultureIgnoreCase));
+					if (!string.IsNullOrEmpty(matchingName))
+					{
+						return (T)Enum.Parse(typeof(T), matchingName);
+					}
+					else
+					{
+						return null;
+					}
 				}
 			}
 			return returnValue;
@@ -172,11 +181,23 @@ namespace MMDB.Shared
 			}
 			else 
 			{
-				if (!Enum.IsDefined(typeof(T), value))
+				if (Enum.IsDefined(typeof(T), value))
 				{
-					throw new Exception(string.Format("Unrecognized value for {0}: \"{1}\"", typeof(T).Name, value));
+					return (T)Enum.Parse(typeof(T), value);
 				}
-				return (T)Enum.Parse(typeof(T), value);
+				else 
+				{
+					var nameList = Enum.GetNames(typeof(T));
+					var matchingName = nameList.FirstOrDefault(i => !string.IsNullOrEmpty(i) && i.Equals(value, StringComparison.CurrentCultureIgnoreCase));
+					if (!string.IsNullOrEmpty(matchingName))
+					{
+						return (T)Enum.Parse(typeof(T), matchingName);
+					}
+					else
+					{
+						throw new EnumCastException(value, typeof(T));
+					}
+				}
 			}
 		}
 
@@ -201,11 +222,23 @@ namespace MMDB.Shared
 				}
 				else 
 				{
-					if(!Enum.IsDefined(type,value))
+					if(Enum.IsDefined(type,value))
 					{
-						throw new Exception(string.Format("Failed to convert string value \"{0}\" to enum type \"{1}\"",value,type.Name));
+						returnValue = Enum.Parse(type, stringValue);
 					}
-					returnValue = Enum.Parse(type,stringValue);
+					else 
+					{
+						var nameList = Enum.GetNames(type);
+						var matchingName = nameList.FirstOrDefault(i=>!string.IsNullOrEmpty(i) && i.Equals(stringValue, StringComparison.CurrentCultureIgnoreCase));
+						if(!string.IsNullOrEmpty(matchingName))
+						{
+							returnValue = Enum.Parse(type, matchingName);
+						}
+						else 
+						{
+							throw new Exception(string.Format("Failed to convert string value \"{0}\" to enum type \"{1}\"",value,type.Name));
+						}
+					}
 				}
 			}
 			else if (value is int)

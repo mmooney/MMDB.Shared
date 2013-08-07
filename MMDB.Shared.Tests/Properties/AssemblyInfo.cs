@@ -5,12 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MMDB.Shared")]
-[assembly: AssemblyDescription("MMDB Shared Library")]
+[assembly: AssemblyTitle("MMDB.Shared.Tests")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MMDB Solutions, LLC")]
-[assembly: AssemblyProduct("MMDB.Shared")]
-[assembly: AssemblyCopyright("Copyright ©  2011 MMDB Solutions, LLC")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("MMDB.Shared.Tests")]
+[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -18,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("46f477ff-bbdc-4a17-95d0-979a27184fb0")]
+[assembly: Guid("5d14a4d0-5da9-4efe-a0ec-211632952587")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -30,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.19")]
-[assembly: AssemblyFileVersion("2.0.0.19")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMDB.Shared", "MMDB.Shared.csproj", "{2673FF3A-6E11-49AC-AE5B-145EB5EFF8D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMDB.Shared.Tests", "MMDB.Shared.Tests\MMDB.Shared.Tests.csproj", "{C735EC7D-D62F-4AFB-97B1-871B461590E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{2673FF3A-6E11-49AC-AE5B-145EB5EFF8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2673FF3A-6E11-49AC-AE5B-145EB5EFF8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2673FF3A-6E11-49AC-AE5B-145EB5EFF8D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C735EC7D-D62F-4AFB-97B1-871B461590E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C735EC7D-D62F-4AFB-97B1-871B461590E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C735EC7D-D62F-4AFB-97B1-871B461590E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C735EC7D-D62F-4AFB-97B1-871B461590E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
