@@ -80,7 +80,39 @@ namespace MMDB.Shared.Web
 			return value.Value;
 		}
 
-		public static bool? GetBoolParameter(string parameterName)
+        public static long? GetLongParameter(string parameterName)
+        {
+            long? returnValue = null;
+            string stringValue = WebFormsHelper.GetStringParameter(parameterName);
+            if (!string.IsNullOrEmpty(stringValue))
+            {
+                long tempInt;
+                if (!long.TryParse(stringValue, out tempInt))
+                {
+                    throw new Exception(string.Format("Failed to parse long parameter \"{0}\" for value \"{1}\"", parameterName, stringValue));
+                }
+                returnValue = tempInt;
+            }
+            return returnValue;
+        }
+
+        public static long GetLongParameter(string parameterName, long defaultValue)
+        {
+            long? returnValue = GetLongParameter(parameterName);
+            return returnValue.GetValueOrDefault(defaultValue);
+        }
+
+        public static long GetRequiredLongParameter(string parameterName)
+        {
+            long? value = WebFormsHelper.GetLongParameter(parameterName);
+            if (!value.HasValue)
+            {
+                throw new Exception(string.Format("Missing {0} Parameter", parameterName));
+            }
+            return value.Value;
+        }
+
+        public static bool? GetBoolParameter(string parameterName)
 		{
 			bool? returnValue = null;
 			string stringValue = GetStringParameter(parameterName);
