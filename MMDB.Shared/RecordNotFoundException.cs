@@ -5,11 +5,7 @@ namespace MMDB.Shared
 	[Serializable]
 	public class RecordNotFoundException : Exception
 	{
-		public RecordNotFoundException(Type recordType, int recordID) : base(FormatMessage(recordType,recordID))
-		{			
-		}
-		
-		public RecordNotFoundException(Type recordType, string recordID) : base(FormatMessage(recordType,recordID))
+		public RecordNotFoundException(Type recordType, object recordID) : base(FormatMessage(recordType,recordID))
 		{			
 		}
 		
@@ -31,17 +27,7 @@ namespace MMDB.Shared
 			return string.Format("Unable to load {0} record where field {1} equals \"{2}\"",recordType.Name,fieldName,valueString);
 		}
 
-        private static string FormatMessage(Type recordType, int recordID)
-        {
-            return FormatMessage(recordType, recordType.ToString());
-        }
-
-        private static string FormatMessage(Type recordType, long recordID)
-        {
-            return FormatMessage(recordType, recordType.ToString());
-        }
-
-        private static string FormatMessage(Type recordType, string recordID)
+        private static string FormatMessage(Type recordType, object recordID)
 		{
 			return string.Format("Unable to load {0} record for ID {1}, record not found",recordType.Name,recordID);
 		}

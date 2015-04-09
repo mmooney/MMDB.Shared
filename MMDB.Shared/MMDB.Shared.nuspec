@@ -10,7 +10,8 @@
     <projectUrl>https://github.com/mmooney/MMDB.Shared</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <copyright>Copyright 2013 MMDB Solutions, LLC</copyright>
+    <copyright>Copyright 2015 MMDB Solutions, LLC</copyright>
 		<tags>.net helper mmdb shared</tags>
-	</metadata>
+    <iconUrl>http://www.gravatar.com/avatar/583bdba0c32e151c9d2eafdd32555c17.png</iconUrl>
+  </metadata>
 </package>
