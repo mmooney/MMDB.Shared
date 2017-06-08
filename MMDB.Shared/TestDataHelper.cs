@@ -29,5 +29,12 @@ namespace MMDB.Shared
 		{
 			return Convert.ToDecimal(TestDataHelper.Random.NextDouble());
 		}
+
+		public static decimal RandomDecimal(decimal minValue, decimal maxValue)
+		{
+			var next = TestDataHelper.RandomDecimal();
+
+			return minValue + (next * (maxValue - minValue));
+		}
 	}
 }
