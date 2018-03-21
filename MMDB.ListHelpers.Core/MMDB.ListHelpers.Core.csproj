@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Version>2.0.0.3</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>MMDB Solutions, LLC</Company>
+    <Authors>Mike Mooney</Authors>
+    <Copyright>Copyright 2018 MMDB Solutions, LLC</Copyright>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <Description>Paging and list helpers</Description>
+    <PackageTags>.net core helper mmdb shared pagedlist list helper</PackageTags>
+    <PackageIconUrl>http://www.gravatar.com/avatar/583bdba0c32e151c9d2eafdd32555c17.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/mmooney/MMDB.Shared</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="X.PagedList" Version="7.2.4" />
+  </ItemGroup>
+
+</Project>
