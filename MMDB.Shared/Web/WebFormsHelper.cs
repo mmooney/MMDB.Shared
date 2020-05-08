@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Text.RegularExpressions;
+using System.Data.SqlTypes;
 
 namespace MMDB.Shared.Web
 {
@@ -440,6 +441,68 @@ namespace MMDB.Shared.Web
 		{
 			DateTime? returnValue = WebFormsHelper.GetDateTimeViewState(viewState, fieldName);
 			return returnValue.GetValueOrDefault(defaultValue);
+		}
+
+		public static decimal? GetDecimalParameter(string parameterName)
+		{
+			decimal? returnValue = null;
+			string stringValue = WebFormsHelper.GetStringParameter(parameterName);
+			if (!string.IsNullOrEmpty(stringValue))
+			{
+				if (!decimal.TryParse(stringValue, out decimal tempDecimal))
+				{
+					throw new Exception($"Failed to parse long parameter \"{parameterName}\" for value \"{stringValue}\"");
+				}
+				returnValue = tempDecimal;
+			}
+			return returnValue;
+		}
+
+		public static decimal GetDecimalParameter(string parameterName, decimal	defaultValue)
+		{
+			decimal? returnValue = GetDecimalParameter(parameterName);
+			return returnValue.GetValueOrDefault(defaultValue);
+		}
+
+		public static decimal GetRequiredDecimalParameter(string parameterName)
+		{
+			decimal? value = WebFormsHelper.GetDecimalParameter(parameterName);
+			if (!value.HasValue)
+			{
+				throw new Exception(string.Format("Missing {0} Parameter", parameterName));
+			}
+			return value.Value;
+		}
+
+		public static T? GetEnumParameter<T>(string parameterName) where T : struct
+		{
+			T? returnValue = null;
+			string stringValue = WebFormsHelper.GetStringParameter(parameterName);
+			if (!string.IsNullOrEmpty(stringValue))
+			{
+				returnValue = EnumHelper.TryParse<T>(stringValue);
+				if(!returnValue.HasValue)
+				{
+					throw new Exception($"Failed to parse enum {typeof(T)} parameter \"{parameterName}\" for value \"{stringValue}\"");
+				}
+			}
+			return returnValue;
+		}
+
+		public static T GetEnumParameter<T>(string parameterName, T defaultValue) where T: struct
+		{
+			T? returnValue = GetEnumParameter<T>(parameterName);
+			return returnValue.GetValueOrDefault(defaultValue);
+		}
+
+		public static T GetRequiredEnumParameter<T>(string parameterName) where T:struct
+		{
+			T? value = WebFormsHelper.GetEnumParameter<T>(parameterName);
+			if (!value.HasValue)
+			{
+				throw new Exception(string.Format("Missing {0} Parameter", parameterName));
+			}
+			return value.Value;
 		}
 	}
 }
