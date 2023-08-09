@@ -9,7 +9,7 @@ namespace MMDB.Shared
     {
         public static bool Contains(this string x, string value, StringComparison comparer)
         {
-            return (x.IndexOf(value, comparer) >= -1);
+            return (x.IndexOf(value, comparer) > -1);
         }
     }
 }

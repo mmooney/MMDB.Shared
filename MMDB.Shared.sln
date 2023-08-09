@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMDB.Shared.Tests", "MMDB.Shared.Tests\MMDB.Shared.Tests.csproj", "{C735EC7D-D62F-4AFB-97B1-871B461590E7}"
 EndProject
